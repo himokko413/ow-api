@@ -1,8 +1,3 @@
-from beautifulscraper import BeautifulScraper
+from prettify import output
 
-web = BeautifulScraper()
-
-page = web.go("https://playoverwatch.com/en-us/career/pc/himokko413-1907")
-file = open("pc-prettified.html","w")
-file.write(page.prettify().encode('utf-8'));
-file.close
+print(output);
