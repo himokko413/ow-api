@@ -2,11 +2,20 @@
 # A unique ID that determines platform and player
 # Appended on career profile page.
 
-from beautifulscraper import BeautifulScraper
+platforms = {
+	0: "pc",
+	1: "xbl",
+	2: "psn"
+}
 
-web = BeautifulScraper()
-
-page = web.go("https://playoverwatch.com/en-us/career/pc/himokko413-1907")
-file = open("sample-page/pc-prettified.html","w")
-file.write(page.prettify().encode('utf-8'));
-file.close
+def getUpl(pf, sn, di = None):
+	pl = platforms.get(pf, -1)
+	if pl == -1:
+		return -1
+	elif pf == 0:
+		if di is None:
+			return -1
+		else:
+			return pl + "/" + sn + "-" + di
+	else:
+		return pl + "/" + sn
